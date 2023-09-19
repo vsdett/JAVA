@@ -1,0 +1,75 @@
+
+public class Main
+{
+	public static void main(String[] args) {
+		
+		String s="Hello Vickey";
+		
+		System.out.println(s.length()); //returns length in int
+		System.out.println(s.charAt(11)); //returns character at the given position
+		System.out.println(s.indexOf('e')); //returns position string or character in int
+		System.out.println(s.indexOf("key"));
+		System.out.println(s.indexOf("keys")); //-1
+		System.out.println(s.indexOf('z'));  // it returns -1 if chracter or string is  not present
+		System.out.println(s.lastIndexOf('e')); // returns index of last occurence of character in int
+		System.out.println(s.indexOf('e')); //returns index of first occurence of character in int
+		System.out.println(s.startsWith("He")); // true   checks prefix and suffix
+		System.out.println(s.startsWith("he")); //false
+		System.out.println(s.startsWith("H"));  //true
+		System.out.println(s.endsWith("ey"));   //true
+		System.out.println(s.isEmpty()); //false
+		 
+		String t="hii vic   ";
+		System.out.println(t.trim()+ " coder");
+		System.out.println(t +" coder");
+		
+		//substring
+		String s1=s.substring(4,11); //s in string is smaller
+		System.out.println(s1); // output = o Vicke
+		
+		//comparisons
+		// equals simply check equality and returns boolean value
+		//compareTo checks lexical ordering and returns int value
+		String s2="Yes";
+		String s3="Yes";
+		String s4="yes";
+		String s5="Wf";
+		System.out.println(s2.equals(s3)); //true
+		System.out.println(s2.equals(s4)); //false
+		System.out.println(s2.equalsIgnoreCase(s4)); //true
+		System.out.println(s2.equals(s5)); //false
+		
+		System.out.println(s2.compareTo(s3)); // output- 0 (which means equal)
+		System.out.println(s2.compareTo(s5)); //output- 2 (W-Y=2)
+		
+		//adding strings
+		System.out.println(s4+" "+s2+" " +s3);
+		System.out.println(s2.concat(s3));
+		String s6=s2.concat(s3);
+		System.out.println(s6);
+		
+		//change or modify a String
+		String s7="vickey is good";
+		String s8=s7.replace('v','R');
+		System.out.println(s8);
+		String s9=s7.replace("is","is not");
+		System.out.println(s9);
+		
+		// lower case and upper case
+		String s10="I am lower case and UPPER CASE";
+		String s11=s10.toLowerCase();
+		System.out.println(s11);
+		System.out.println(s10.toUpperCase());
+		char ch=s11.charAt(0);
+		System.out.println(Character.isLowerCase(ch));
+		System.out.println(Character.isLowerCase(s11.charAt(0)));
+		
+		//convert any data type to String
+		int a=10;
+		String s12=String.valueOf(a);
+		System.out.println(s12+23);  //1023
+		System.out.println(a+23);  //33
+		
+		
+	}
+}
