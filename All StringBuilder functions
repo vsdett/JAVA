@@ -1,0 +1,70 @@
+
+public class Main
+{
+	public static void main(String[] args) {
+		StringBuilder sb1=new StringBuilder();
+		System.out.println("initial capacity of sb1 :"+sb1.capacity());
+		StringBuilder sb2=new StringBuilder(10);
+	    System.out.println("updated capacity of sb2 :"+sb2.capacity());
+	    CharSequence seq="hello";
+	    StringBuilder sb3=new StringBuilder(seq);
+	    System.out.println("sb3 :"+sb3);
+	    String str="hey";
+	    StringBuilder sb4=new StringBuilder(str);
+	    System.out.println("sb4 :"+sb4);
+	    
+	    //1.Append
+	    sb3.append(" Vickey");
+	    System.out.println("sb3 :"+sb3);
+	    sb3.append(23);
+	    System.out.println("sb3 :"+sb3);
+	    sb3.append(" "+23);
+	    System.out.println("sb3 :"+sb3);
+	    sb3.append(" " + 23);
+	    System.out.println("sb3 :"+sb3);
+	    sb3.append(2+3);
+	    System.out.println("sb3 :"+sb3);
+	    
+	    //2. appendCodePoint
+	    StringBuilder sb5=new StringBuilder("Bombay");
+	    sb5.appendCodePoint(88);
+	    System.out.println(sb5);
+	    //3. charAt
+	    System.out.println(sb5.charAt(3));
+	    //4.deleteCharAt
+	    System.out.println(sb5.deleteCharAt(3));
+	    //5. reverse
+	    System.out.println(sb5.reverse());
+	    //6.length
+	    System.out.println(sb5.length());
+	    //7. indexOf
+	    System.out.println(sb5.indexOf("m")); // 'm' is not allowed here unlike String
+	    //8. lastIndexOf
+	    System.out.println(sb5.lastIndexOf("m"));  // 3
+	    System.out.println(sb5.lastIndexOf("k"));  // -1
+	    //9. isEmpty
+	        //no empty function
+	   // 10.substring
+	   StringBuilder sb6=new StringBuilder("Believe");
+	   System.out.println(sb6.substring(2));
+       System.out.println(sb6);
+       //Note : substring did not actually change the string
+       
+	    //11. delete
+	    // this delete function is not in string
+	   System.out.println(sb6.delete(1,3));
+	   System.out.println(sb6);
+	   
+	   //12.insert
+	   System.out.println(sb6.insert(1,'e'));
+	   
+	   System.out.println(sb6.insert(1,"Leee"));
+	   System.out.println(sb6);
+	   //it also replaces and updates the string from the new position
+	   
+	   //13. Stringbuilder to String
+	   System.out.println(sb6.getClass().getSimpleName());
+	   String st=sb6.toString();
+	   System.out.println(st.getClass().getSimpleName());  
+	}
+}
