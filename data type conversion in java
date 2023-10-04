@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+		ArrayList<Integer> ar=new ArrayList<>(Arrays.asList(2,3,4,56,8));
+//1 .ArrayList to array.  # just be careful with datatype ,int won't work.
+		Integer arr[]=new Integer[ar.size()];
+		ar.toArray(arr);
+		for(Integer i:arr)
+		{System.out.println(i);}
+//2 string to ArrayList
+       String s="12345";
+       ArrayList<String> str=new ArrayList<>(Arrays.asList(s.split("")));
+       System.out.println(str);
+//int to String
+     int a=12;
+     String sr=String.valueOf(a);
+     System.out.println(sr+12);
+     System.out.println(a+12);
+//string to int
+    String ab="1200";
+    int abc=Integer.valueOf(ab);  //OR int abc=Integer.parseInt(ab)
+    System.out.println(abc+33);
+    System.out.println(ab+33);
+     
+	}
+}
