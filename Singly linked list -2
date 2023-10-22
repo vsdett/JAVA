@@ -19,7 +19,8 @@ public class Main
             System.out.print(current.data+"->");
             current=current.next;
         }
-        System.out.print("null");
+        System.out.println("null "+ "size= "+size);
+        
     }
     void addfirst(int data)
     {
@@ -46,8 +47,8 @@ public class Main
     public static Node get(int index)   //this function is used to get the index of LL
     {
         Node current=head;
-        for(int i=1;i<index;i++)    //we start i from 1,not 0
-        { current=current.next;}  //this will give the node previous to the asked index
+        for(int i=1;i<=index;i++)    //we start i from 1,not 0
+        { current=current.next;}  //this will give the index of node  asked 
         return current;
         
     }
@@ -64,9 +65,54 @@ public class Main
         }
         Node curr=get(index);
         Node value=new Node(data);
-        value.next=curr.next.next;
-        curr.next.next=value;
+        value.next=curr.next;
+        curr.next=value;
         size++;
+    }
+    public void deletefirst()
+    {
+        if(head==null)
+        {
+         System.out.println("Empty LL");
+         return;
+        }
+        head=head.next;
+        size--;
+    }
+    public void deletelast()
+    {
+        if(head==null)
+        {
+            System.out.println("empty ll");
+            return;
+        }
+        if(head.next==null)
+        {
+            head=null;
+            System.out.println("null");
+            size--;
+            return;
+        }
+        Node prev=get(size-2);
+        prev.next=null;
+        tail=prev;
+        size--;
+    }
+    public void delete(int index)
+    {
+        if(index==0)
+        {
+            deletefirst();
+            return;
+        }
+        if(index+1==size)
+        {
+            deletelast();
+            return;
+        }
+        Node prev=get(index-1);
+        prev.next=prev.next.next;
+        size--;
     }
 	public static void main(String[] args) {
 		Main list=new Main();
@@ -75,13 +121,15 @@ public class Main
 		list.addfirst(8);
 		list.addlast(7);
 		list.display();
-		System.out.println("\n"+"size "+size);
 		Node prev=get(3);
-		System.out.println(get(0).data);
+		System.out.println(get(2).data);
 		System.out.println(prev.data);
 		list.insert(18,2);
 		list.display();
-		System.out.println("\n"+"size "+size);
-		
+	        list.deletefirst();
+	        list.deletelast();
+	        list.display();
+	        list.delete(1);
+	        list.display();
 	}
 }
