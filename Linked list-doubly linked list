@@ -1,0 +1,107 @@
+
+public class Main
+{
+    Node head,tail;
+    int size=0;
+    class Node
+    {
+        int data;
+        Node next;
+        Node prev;
+        Node(int data)
+        {
+            this.data=data;
+        }
+    }
+    public void display()
+    {
+        Node current=head;
+        while(current !=null)
+        {
+            System.out.print(current.data+"->");
+            current=current.next;
+        }
+        System.out.println(" null    size= "+size);
+        
+    }
+    public void addfirst(int data)
+    {
+        Node newnode=new Node(data);
+        newnode.next=head;
+        if(head !=null)  //important corner case
+        head.prev=newnode;
+        newnode.prev=null;
+        head=newnode;
+        if(tail==null)
+        {
+            tail=head;
+        }
+        size++;
+    }
+    public void addlast(int data)
+    {
+        Node newnode=new Node(data);
+        if(head==null)
+        {addfirst(data);
+            return;
+        }
+        newnode.prev=tail;
+        tail.next=newnode;
+        newnode.next=null;
+        tail=newnode;
+        size++;
+    }
+    public void displayreverse()
+    {
+        Node current=tail;
+        while(current!=null)
+        {
+            System.out.print(current.data+"->");
+            current=current.prev;
+        }
+        System.out.println(" null    size= "+size);
+    }
+    public void insert(int index,int data)
+    {
+        
+      if(index==0)
+      {
+          addfirst(data);
+          return;
+      }
+      if(index+1==size)
+      {
+          addlast(data);
+          return;
+      }
+      Node newnode=new Node(data);
+      Node current=head;
+      for(int i=1;i<=index;i++)
+      {
+          current=current.next;
+      }
+      newnode.prev=current;
+      newnode.next=current.next;
+      if(current.next.prev !=null)  //very important corner case for only element in list
+      {
+          current.next.prev=newnode;
+      }
+      current.next=newnode;
+      size++;
+      System.out.println("head= "+head.data);
+		System.out.println("tail= "+tail.data);
+    }
+    
+	public static void main(String[] args) {
+		Main dll=new Main();
+		dll.addfirst(3);
+		dll.addfirst(4);
+		dll.addlast(7);
+		dll.addlast(9);
+		dll.display();
+		dll.insert(2,18);
+		dll.display();
+		
+		dll.displayreverse();
+	}
+}
