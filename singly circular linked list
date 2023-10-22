@@ -1,0 +1,73 @@
+
+public class Main
+{
+    Node head,tail;
+    int size=0;
+    
+    class Node
+    {
+        int data;
+        Node next;
+        Node(int data)
+        {
+            this.data=data;
+        }
+    }public void addfirst(int data)
+    {
+        Node newNode=new Node(data);
+        newNode.next=head;
+        head=newNode;
+        if(tail==null)
+        tail=head;
+        tail.next=head;
+        size++;
+        System.out.println("head"+head.data);
+         System.out.println("tail"+tail.next.data);
+    }
+    public void delete(int value)
+    {
+        if(head==null)
+        {
+            System.out.println("empty ccl");
+            return;
+        }
+        if(head==tail)
+        {
+            head=null;
+            tail=null;
+            return;
+        }
+        if(head.next!=null)
+        {
+           Node current=head 
+        while(current.next.data!=null)
+        {
+            current=current.next
+        }
+        current=current.next.next;
+        }
+    }
+    public void display()
+    {
+        Node current=head;
+        if(head!=null)
+        {
+            do{
+                System.out.print(current.data+"->");
+                if(current.next!=null)
+                {
+                    current=current.next;
+                }
+            }while(current!=head);
+        }
+        System.out.print("head  size= "+size);
+        
+    }
+	public static void main(String[] args) {
+		Main cll=new Main();
+		cll.addfirst(5);
+		cll.addfirst(7);
+		cll.addfirst(18);
+		cll.display();
+	}
+}
