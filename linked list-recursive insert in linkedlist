@@ -1,0 +1,60 @@
+public class Main
+{
+    Node head;
+    public class Node
+    {
+        int data;
+        Node next;
+        Node(int data)
+        {
+            this.data=data;
+        }
+        Node(int data,Node next)
+        {
+            this.data=data;
+            this.next=next;
+        }
+    }
+    public void addfirst(int data)
+    {
+        Node newnode=new Node(data);
+        newnode.next=head;
+        head=newnode;
+    }
+    public void display()
+    {
+        Node curr=head;
+        while(curr!=null)
+        {
+            System.out.print(curr.data+"-> ");
+            curr=curr.next;
+        }
+        System.out.println("null");
+        
+    }
+    public  void recursiveInsert(int data,int index)
+    {
+        head=recursiveInsert(data,index,head);
+    }
+    public  Node recursiveInsert(int data,int index,Node node)
+    {
+        if(index==0)
+        {
+            Node temp=new Node(data,node);  //created another node func that accepts 2 parameters.it takes care of the rest of the LL
+            return temp;
+        }
+        node.next=recursiveInsert(data,index-1,node.next);
+        return node;
+    }
+	public static void main(String[] args) {
+		//System.out.println("Hello World");
+		Main list= new Main();
+		list.addfirst(4);
+		list.addfirst(3);
+		list.addfirst(2);
+		list.addfirst(1);
+		list.recursiveInsert(18,3);
+		list.recursiveInsert(19,0);
+		list.display();
+	}
+}
