@@ -1,1 +1,97 @@
+// https://leetcode.com/problems/merge-two-sorted-lists/submissions/
+public class Main
+{
+    Node head;
+    class Node
+    {
+        int data;
+        Node next;
+        Node(int data)
+        {
+            this.data=data;
+            
+        }
+        Node(int data,Node next)
+        {
+            this.data=data;
+            this.next=next;
+        }
+    }
+    public void addfirst(int data)
+    {
+        Node newnode=new Node(data);
+        newnode.next=head;
+        head=newnode;
+    }
+    public void display()
+    {
+        Node curr=head;
+        while(curr!=null)
+        {
+            System.out.print(curr.data+"->");
+            curr=curr.next;
+        }
+        System.out.println("null");
+    }
+    public void addlast(int data)
+    {
+        Node curr =head;
+        Node newnode=new Node(data);
+        if(head==null)
+        {addfirst(data);
+        return;
+        }
+        while(curr.next!=null)
+        {
+            curr=curr.next;
+        }
+        curr.next=newnode;
+        
+    }
+   public static Main  mergelist(Main first,Main second)  //the parameters are list itself //also notice the return type of this func
+   {
+       Node f1=first.head; //f1 is the head of first list    //see how first is extracted
+       Node f2=second.head;  //f2 is the head of second list
+       Main ans =new Main(); // final merged list
+       while(f1 !=null && f2 !=null)
+       {
+           if(f1.data<f2.data)
+           {ans.addlast(f1.data);
+               f1=f1.next;
+           }
+           else
+           {ans.addlast(f2.data);
+               f2=f2.next;
+           }
+       }
+       while(f1!=null)
+       {
+           ans.addlast(f1.data);
+           f1=f1.next;
+       }
+       while(f2!=null)
+       {
+           ans.addlast(f2.data);
+           f2=f2.next;
+       }
+     
+       return ans;
+   }
+	public static void main(String[] args) {
+		Main list=new Main();
+		Main list2=new Main();
+		list.addfirst(32);
+		list.addfirst(23);
+		list.addfirst(17);
+		list.addfirst(9);
+		list2.addfirst(31);
+		list2.addfirst(12);
+		list2.addfirst(3);
+		list.display();
+		list2.display();
+		Main ans= Main.mergelist(list,list2);  // can be - Main any_variable =.......
+		ans.display();
+		
+	}
+}
 
