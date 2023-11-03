@@ -1,0 +1,36 @@
+//https://practice.geeksforgeeks.org/problems/reverse-a-sublist-of-a-linked-list/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+
+class Solution
+{
+    public static Node reverseBetween(Node head, int m, int n)
+    {
+        //code here
+        if(m==n)
+        return head;
+        Node before=null;
+        Node present =head;
+        //for skipping n nodes
+        for(int i =0;i<m-1 && present!=null;i++)
+        {
+            before=present;
+            present=present.next;
+        }
+        Node prev=null ;
+        Node curr=present;
+        Node N=curr.next;
+        for(int i =0;i<n-m+1 && curr!=null;i++)
+        {
+            curr.next=prev;
+            prev=curr;
+            curr=N;
+            if(N!=null)
+            N=N.next;
+        }
+        if(before!=null)
+        before.next=prev;
+        else
+        head=prev;
+        present.next=curr;
+        return head;
+    }
+}
