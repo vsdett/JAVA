@@ -1,0 +1,210 @@
+//Queue implementaion using array
+public class Main
+{
+    static class Queue
+    {
+        static int arr[];
+        static int size;
+        static int rear=-1; //front is always 0 in case of array implementation
+    
+        Queue(int n)  //Queue constructor
+        {
+            this.size=n;
+            arr=new int[n];
+        }
+        public static boolean isEmpty()
+        {
+            return rear==-1; // true or false  //*
+        }
+        public static void add(int data)
+        {
+            if(rear==size-1)
+            {
+                System.out.println("queue is full");
+                return;
+            }
+            rear++;
+            arr[rear]=data;
+        }
+        public static int remove()
+        {
+            if(isEmpty())
+            {
+                System.out.println("Queue is already empty");
+                return -1;
+            }
+            int front=arr[0];
+            for(int i=0;i<rear;i++)
+            {
+                arr[i]=arr[i+1];
+            }
+            rear--;
+            return front; //returns the first element(deleted element) 
+        }
+        public static int peek()
+        {
+            if(isEmpty())
+            {
+                System.out.println("Queue is already empty");
+                return -1;
+            }
+            return arr[0];
+        }
+    }
+
+	public static void main(String[] args) {
+		Queue q=new Queue(5);
+		q.add(2);
+		q.add(3);
+		q.add(4);
+		q.add(5);
+		q.add(8);
+		//q.add(99);
+		q.peek();   //does not have anything to collect the return type,still no error?
+		System.out.println(q.peek());
+		
+		while(!q.isEmpty())
+		{
+		    //q.peek();
+		    System.out.println(q.remove());
+		}
+		System.out.println(q.remove());
+	}	
+}
+
+
+
+//
+//circular queue using array
+public class Main
+{
+    static class queue
+    {
+        static int arr[];
+        static int size;
+        static int front=-1,rear=-1;
+        queue(int n)
+        {
+           this.size=n;
+           arr=new int[n];
+        }
+        static public boolean isEmpty()
+        {
+           return rear==-1 && front==-1; 
+        }
+        static public boolean  isFull()
+        {
+         return (rear+1)%size==front;   
+        }
+        public static void add(int n)
+        {
+            if(isFull())
+            {return;}
+            //for 1st element
+            if(front==-1)
+            front=0;
+            
+            rear=(rear+1)%size;
+            arr[rear]=n;
+        }
+        public static void  remove()
+        {
+            if(isEmpty())
+           {System.out.print("empty queue");
+               return ;}
+            if(rear==front)  //only 1 element in queue
+            {
+                rear=front=-1;
+            }
+            else
+            front=(front+1)%size;
+        }
+         public static int peek()
+        {
+            if(isEmpty())
+            {
+                System.out.println("Queue is already empty");
+                return -1;
+            }
+            return arr[front];
+        }
+        public static void display()
+        {
+           
+        }
+    }
+	public static void main(String[] args) {
+		//System.out.println("Hello World");
+		queue q=new queue(5);
+		q.add(2);
+		q.add(3);
+		q.add(4);
+		//q.display();
+		 while(!q.isEmpty())
+            {
+                System.out.print(q.peek());
+                q.remove();
+            }
+            
+	}
+}
+
+
+//implementing queue  in a linked list
+public class Main
+{
+    static Node head;
+    static Node tail;
+    static class Node
+    {
+        int data;
+        Node next;
+        Node(int data)
+        {
+            this.data=data;
+        }
+    }
+    public static class queue
+    {
+        //front=head ,rear=tail
+    
+    public static boolean isEmpty()
+    {
+        return head==null;
+    }
+    public static void add(int data)
+    {
+        Node newnode=new Node(data);
+        if(tail==null) //no element in LL
+        {
+            tail=head=newnode;
+            return;
+        }
+        tail.next=newnode;
+        tail=newnode;
+    }
+    public static int remove()
+    {
+        if(isEmpty())
+        {
+            return -1;
+        }
+    if(head==tail)
+    {tail=null;}
+     head=head.next;
+     int front=head.data;
+     return front;
+    }
+    }
+	public static void main(String[] args) {
+		//System.out.println("Hello World");
+		queue list=new queue();
+		list.add(5);
+		list.add(7);
+		while(head!=null)
+		{
+		    System.out.print("head.data "+ head.data);
+		    head=head.next;
+		}
+	}
+}
