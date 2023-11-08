@@ -1,0 +1,39 @@
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		//System.out.println("Hello World");
+		Stack<Integer> s=new Stack<>();
+		s.push(2);
+		s.push(5);
+		s.push(7);
+		System.out.println(s.pop());
+		System.out.println(s.pop());
+		System.out.println(s.pop());
+		System.out.println("Queue");
+		Queue<Integer> q=new LinkedList<>();  //ArrayDeque
+		q.add(2);
+		q.add(5);
+		q.add(7);
+		
+		System.out.println(q.remove());
+		System.out.println(q.remove());
+		System.out.println(q.remove());
+		
+		System.out.println("Deque");
+		//used majorly in tree traversal from left to right and vice versa as per wish
+		Deque<Integer> dq=new LinkedList<>();  //ArrayDeque
+		dq.add(2);
+		dq.add(5);
+		dq.add(7);
+		dq.addFirst(0);
+		dq.addLast(9);
+		System.out.println(dq.remove());
+		System.out.println(dq.remove());
+		System.out.println(dq.remove());
+		System.out.println(dq.remove());
+		System.out.println(dq.remove());
+					
+	}
+}
