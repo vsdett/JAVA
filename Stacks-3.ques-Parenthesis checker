@@ -1,0 +1,37 @@
+https://practice.geeksforgeeks.org/problems/parenthesis-checker2744/1
+
+
+class Solution
+{
+    //Function to check if brackets are balanced or not.
+    static boolean ispar(String x)
+    {
+        // add your code here
+        Stack<Character> s =new Stack<>();
+        for(char i:x.toCharArray())
+        {
+            if(i=='{' || i=='(' || i=='[')
+            s.push(i);
+            else
+            {
+                if(i=='}')
+                {
+                    if(s.isEmpty() || s.pop()!='{')
+                    return false;
+                }
+                if(i==')')
+                {
+                    if(s.isEmpty() || s.pop()!='(')
+                    return false;
+                }
+                if(i==']')
+                {
+                    if(s.isEmpty() || s.pop()!='[')
+                    return false;
+                }    
+            }
+            
+        }
+        return s.isEmpty();
+    }
+}
