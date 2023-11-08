@@ -1,0 +1,118 @@
+https://practice.geeksforgeeks.org/problems/queue-using-stack/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+
+/Method 1---add= O(n),remove()/peek() = O(1)
+import java.util.*;
+public class Main
+{
+    	static Stack<Integer> s1=new Stack<Integer>();
+		static Stack<Integer> s2=new Stack<Integer>();
+		
+		static  class queue
+		{
+		     public static boolean isEmpty()
+		    {
+		        return s1.isEmpty();
+		    }
+		   public static void add(int data)
+		   {
+		       while(!s1.isEmpty())
+		       {
+		           s2.push(s1.pop());
+		       }
+		       s1.push(data);
+		        while(!s2.isEmpty())
+		       {
+		           s1.push(s2.pop());
+		       }
+		       
+		   }
+		   public static int remove()
+		   {
+		       if(s1.isEmpty())
+		       return -1;
+		       int top=s1.pop();
+		       return top;
+		   }
+		   public static int peek()
+		   {
+		       
+		       if(s1.isEmpty())
+		       return -1;
+		       int top=s1.peek();
+		       return top;
+		   }
+		}
+	public static void main(String[] args) {
+	   queue q=new queue();
+	   q.add(2);
+	   q.add(4);
+	   q.add(5);
+	  
+	   while(!q.isEmpty())
+	   {
+	       System.out.println(q.remove());
+	   }
+	}
+}
+
+
+//Method 2----add=O(1) ,remove()/peek()=O(n)
+import java.util.*;
+public class Main
+{
+    static Stack<Integer> s1=new Stack<>();
+    static Stack<Integer> s2=new Stack<>();
+    static class queue
+    {
+        public static boolean isEmpty()
+        {
+            return s1.isEmpty();
+        }
+        public static void add(int data)
+        {
+            s1.push(data);
+        }
+        public static int remove()
+        {
+            if(s1.isEmpty())
+            return -1;
+            while(!s1.isEmpty())
+            {
+                s2.push(s1.pop());
+            }
+            int top=s2.pop();
+            while(!s2.isEmpty())
+            {
+                s1.push(s2.pop());
+            }
+            return top;
+        }
+         public static int peek()
+        {
+            if(s1.isEmpty())
+            return -1;
+            while(!s1.isEmpty())
+            {
+                s2.push(s1.pop());
+            }
+            int top=s2.peek();
+            while(!s2.isEmpty())
+            {
+                s1.push(s2.pop());
+            }
+            return top;
+        }
+        
+    }
+	public static void main(String[] args) {
+		 queue q=new queue();
+	   q.add(2);
+	   q.add(4);
+	   q.add(5);
+	  
+	   while(!q.isEmpty())
+	   {
+	       System.out.println(q.remove());
+	   }
+	}
+}
