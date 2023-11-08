@@ -1,0 +1,58 @@
+https://practice.geeksforgeeks.org/problems/rearrange-linked-list-in-place/1
+class GfG 
+{
+    public static  Node middlenode(Node head)
+       {
+           Node first=head;
+           Node slow =head; 
+           while(first!=null && first.next!=null)
+           {
+               first=first.next.next;
+           slow=slow.next;
+           } return slow;
+       }
+       public static Node reverse(Node mid)
+       {
+           Node prev=null ;
+        Node curr=mid;
+        Node N=curr.next;
+        while(curr!=null)
+        {
+             curr.next=prev;
+            prev=curr;
+            curr=N;
+            if(N!=null)
+            N=N.next;
+        }
+        return prev;
+       }
+    public static Node rearrange(Node head)
+    {
+        if(head.next==null)
+        return head;
+       
+       Node mid=middlenode(head);
+      
+        
+        //mid.next=prev;
+       
+       Node hf=head;
+       Node hs =reverse(mid);
+       Node temp;
+       while(hf!=null && hs!=null)
+       {
+           temp=hf.next;
+           hf.next=hs;
+           hf=temp;
+           temp=hs.next;
+           hs.next=hf;
+           hs=temp;
+           
+       }
+       if(hf!=null)
+       hf.next=null;
+       return head;
+        
+    }
+}
+
