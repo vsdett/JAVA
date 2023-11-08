@@ -1,0 +1,74 @@
+//smallest number on left
+https://practice.geeksforgeeks.org/problems/smallest-number-on-left3403/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+class Solution{
+    static List<Integer> leftSmaller(int n, int a[])
+    {
+        //code here
+        Stack<Integer> s=new Stack<>();
+       ArrayList<Integer> ans=new ArrayList<>();
+        for(int i=0;i<n;i++)
+        {
+            while(!s.isEmpty() && s.peek()>=a[i])
+            {s.pop();}
+            if(s.isEmpty())
+            ans.add(-1);
+            else
+            ans.add(s.peek());
+            //ans.add
+            s.push(a[i]);
+        }
+        return  ans;
+    }
+}
+
+
+//maximum area in histogram
+https://practice.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram-1587115620/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+class Solution
+{
+    //Function to find largest rectangular area possible in a given histogram.
+    public static long getMaxArea(long hist[], long n) 
+    {
+        // your code here
+        long area=0;
+        Stack<Integer> s=new Stack<>();
+        long ps[]=new long [(int)n];
+        long ns[]=new long[(int)n];
+        //revios smaller
+        for(int i =0;i<n ;i++)
+        {
+            while(!s.isEmpty() && hist[(int)s.peek()]>=hist[i])
+            {
+                s.pop();
+            }
+            if(s.isEmpty())
+            ps[i]=-1;
+            else
+            ps[i]=s.peek();
+            s.push(i);
+        }
+        while(!s.isEmpty())
+        {s.pop();}
+        for(int i =(int)n-1;i>=0 ;i--)
+        {
+            while(!s.isEmpty() && hist[(int)s.peek()]>=hist[i])
+            {
+                s.pop();
+            }
+            if(s.isEmpty())
+            ns[(int)i]=n;
+            else
+            ns[(int)i]=s.peek();
+            s.push(i);
+        }
+        for(int i=0;i<n;i++)
+        {
+            area=Math.max(area,(ns[(int)i]-ps[(int)i]-1)*hist[i]);
+        }
+    
+        return area;
+    }
+        
+}
+
+
