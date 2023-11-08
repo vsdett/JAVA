@@ -1,0 +1,109 @@
+//Stack using ArrayList
+import java.util.*;
+public class Main
+{
+    static class stack
+    {
+        static ArrayList<Integer> list=new ArrayList<>();
+        public static boolean isEmpty()
+        {
+            return list.size()==0;
+        }
+        public static void push(int n)
+        {
+           list.add(n); //this adds the element to the last of arraylist(top)
+        }
+        public static void pop()
+        {
+             if(isEmpty())
+            {
+                System.out.println("empty stack");
+                return;
+            }
+            list.remove(list.size()-1);
+        }
+        public static int peek()
+        {
+             if(isEmpty())
+            {
+                System.out.println("empty stack");
+                return -1;
+            }
+            return list.get(list.size()-1);
+        }
+    }
+	public static void main(String[] args) {
+
+		 stack list=new stack();
+		list.push(4);
+		list.push(5);
+		list.push(6);
+		while(!list.isEmpty())
+		{
+		    
+		    System.out.println(list.peek());
+		    list.pop();
+		}
+	}
+}
+//arrays using linked list
+
+public class Main
+{
+    static Node head;
+   static class Node
+    {
+        int data;
+        Node next;
+        Node(int data)
+        {
+            this.data=data;
+        }
+    }
+   
+    static class stack
+    {
+          public boolean isEmpty()
+       {
+        return head==null;
+       }
+        public void push(int data)
+        {
+            Node newnode=new Node(data);
+           
+            newnode.next=head;
+            head=newnode;
+        }
+        public void pop()
+        {
+            if(isEmpty())
+            {
+                System.out.println("empty stack");
+                return ;
+            }
+            head=head.next;
+        }
+        public void peek()
+        {
+            if(isEmpty())
+            {
+                System.out.println("empty stack");
+                return ;
+            }
+            System.out.print(head.data+" ");
+        }
+    }
+	public static void main(String[] args) {
+		//System.out.println("Hello World");
+		stack s=new stack();
+		s.push(4);
+		s.push(7);
+		s.push(9);
+		while(!s.isEmpty())
+		{
+		    s.peek();
+		    s.pop();
+		}
+	}
+}
+
